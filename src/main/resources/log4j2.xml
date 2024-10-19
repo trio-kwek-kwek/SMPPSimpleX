@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+	<Properties>
+		<Property name="LogPath">/Messaging/log/JavaSmpp</Property>
+	</Properties>
+ 	<Appenders>
+ 		<RollingFile name="SMPPTraceFile" filename="${LogPath}/SMPP/trace/trace.log" 
+ 			filepattern="${LogPath}/SMPP/trace/trace-%d{yyyy-MM-dd}-%i.log">
+ 			<PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		    <Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+ 		</RollingFile>
+ 		<RollingFile name="SMPPDebugFile" filename="${LogPath}/SMPP/debug/debug.log" 
+ 			filepattern="${LogPath}/SMPP/debug/debug-%d{yyyy-MM-dd}-%i.log">
+ 			<PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		    <Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+ 		</RollingFile>
+ 		<RollingFile name="SMPPInfoFile" filename="${LogPath}/SMPP/info/info.log" 
+ 			filepattern="${LogPath}/SMPP/info/info-%d{yyyy-MM-dd}-%i.log">
+ 			<PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		    <Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+ 		</RollingFile>
+ 		<RollingFile name="SMPPErrorFile" filename="${LogPath}/SMPP/error/error.log" 
+ 			filepattern="${LogPath}/SMPP/error/error-%d{yyyy-MM-dd}-%i.log">
+ 			<PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		    <Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+ 		</RollingFile>
+ 		<RollingFile name="POOLERDebugFile" filename="${LogPath}/POOLER/debug/debug.log" 
+ 			filepattern="${LogPath}/POOLER/debug/debug-%d{yyyy-MM-dd}-%i.log">
+ 			<PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		    <Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+ 		</RollingFile>
+ 		<RollingFile name="POOLERInfoFile" filename="${LogPath}/POOLER/info/info.log" 
+ 			filepattern="${LogPath}/POOLER/info/info-%d{yyyy-MM-dd}-%i.log">
+ 			<PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		    <Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+ 		</RollingFile>
+ 		<RollingFile name="POOLERErrorFile" filename="${LogPath}/POOLER/error/error.log" 
+ 			filepattern="${LogPath}/POOLER/error/error-%d{yyyy-MM-dd}-%i.log">
+ 			<PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		    <Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+ 		</RollingFile>
+ 		 		
+      	<Console name="Console" target="SYSTEM_OUT">
+      		<PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"/>
+	    </Console>
+	  </Appenders>
+	<Loggers>
+		<Logger name="SMPP_SERVER" level="debug" additivity="false">
+			<AppenderRef ref="Console" level="DEBUG" />
+			<AppenderRef ref="SMPPTraceFile" level="TRACE" />
+			<AppenderRef ref="SMPPDebugFile" level="DEBUG" />
+			<AppenderRef ref="SMPPInfoFile" level="INFO" />
+			<AppenderRef ref="SMPPErrorFile" level="ERROR" />
+		</Logger>
+
+		<Logger name="POOLER" level="debug" additivity="false">
+			<AppenderRef ref="Console" level="DEBUG" />
+			<AppenderRef ref="POOLERTraceFile" level="TRACE" />
+			<AppenderRef ref="POOLERDebugFile" level="DEBUG" />
+			<AppenderRef ref="POOLERInfoFile" level="INFO" />
+			<AppenderRef ref="POOLERErrorFile" level="ERROR" />
+		</Logger>
+
+    	<Root level="error">
+      		<AppenderRef ref="Console" level="TRACE"/>
+      		<AppenderRef ref="RouterTraceFile" level="TRACE"/>
+      		<AppenderRef ref="RouterDebugFile" level="DEBUG"/>
+      		<AppenderRef ref="RouterInfoFile" level="INFO"/>
+      		<AppenderRef ref="RouterErrorFile" level="ERROR"/>
+    	</Root>
+  	</Loggers>
+</Configuration>
